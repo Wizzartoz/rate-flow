@@ -14,7 +14,6 @@ public class GsonDecoder implements Decoder {
     @Override
     public Object decode(Response response, Type type) throws IOException, FeignException {
         Reader reader = response.body().asReader(StandardCharsets.UTF_8);
-        Gson gson = new Gson();
-        return gson.fromJson(reader, type);
+        return new Gson().fromJson(reader, type);
     }
 }

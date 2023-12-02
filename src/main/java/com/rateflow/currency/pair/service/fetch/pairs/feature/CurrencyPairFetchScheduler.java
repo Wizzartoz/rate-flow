@@ -38,7 +38,7 @@ public class CurrencyPairFetchScheduler {
     public void getAllCurrencyPair() {
         //TODO make synchronization for scaling via redis
 
-        //TODO  need to add an ETag check
+        //TODO need to add an ETag check
 
         Mono.fromCallable(() -> currencyPairsFetch.fetchCurrencyPairs(key))
                 .subscribeOn(Schedulers.boundedElastic())
