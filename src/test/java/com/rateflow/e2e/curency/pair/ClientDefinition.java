@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
@@ -30,6 +31,7 @@ import static io.restassured.RestAssured.given;
 
 @CucumberContextConfiguration
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 public class ClientDefinition {
 
     private static final MongoDBContainer MONGO_DB_CONTAINER = new MongoDBContainer("mongo:4.4.6");
@@ -42,7 +44,6 @@ public class ClientDefinition {
     static void overrideMongoDbProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.data.mongodb.uri", MONGO_DB_CONTAINER::getReplicaSetUrl);
     }
-
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -61,14 +62,15 @@ public class ClientDefinition {
 
     @Given("the storage has been cleared")
     public void clearStorage() {
-        currencyPairRepository.deleteAll().subscribe();
+        //TODO need to find the best way.
+        currencyPairRepository.deleteAll().block();
     }
 
     @And("the following currency pairs are available as JSON")
     @SneakyThrows
     public void insertProducts(String json) {
         List<CurrencyPair> products = objectMapper.readValue(json, new TypeReference<>(){});
-        currencyPairRepository.saveAll(products).subscribe();
+        currencyPairRepository.saveAll(products).blockLast();
     }
 
     @When("the client requests for currency pairs")
@@ -88,8 +90,8 @@ public class ClientDefinition {
 
     @Then("the client receives status code of {int}")
     public void compareCodeStatuses(int statusCode) {
-        int  currentStatusCode = lastResponse.getStatusCode();
-        Assertions.assertEquals(currentStatusCode, statusCode);
+        int currentStatusCode = lastResponse.getStatusCode();
+        Assertions.assertEquals(statusCode, currentStatusCode);
     }
 
     @And("the user should receive the following data as JSON")

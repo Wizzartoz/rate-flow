@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 @Service
-@Profile("prod")
+@Profile("!test")
 @Slf4j
 public class CurrencyPairFetchScheduler {
 
@@ -21,7 +21,11 @@ public class CurrencyPairFetchScheduler {
     private final ExchangeApiAdapter exchangeApiAdapter;
 
     @Autowired
-    public CurrencyPairFetchScheduler(CurrencyPairsFetch currencyPairsFetch, CurrencyPairRepository currencyPairRepository, ExchangeApiAdapter exchangeApiAdapter) {
+    public CurrencyPairFetchScheduler(
+            CurrencyPairsFetch currencyPairsFetch,
+            CurrencyPairRepository currencyPairRepository,
+            ExchangeApiAdapter exchangeApiAdapter
+    ) {
         this.currencyPairsFetch = currencyPairsFetch;
         this.currencyPairRepository = currencyPairRepository;
         this.exchangeApiAdapter = exchangeApiAdapter;
