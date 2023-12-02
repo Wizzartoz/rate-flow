@@ -53,24 +53,22 @@ This application provides an API for managing and retrieving currency pairs. It 
 
 Before running the application, you need to have installed:
 
-- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (version 11 or later)
+- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (version 17)
 - [MongoDB](https://www.mongodb.com/try/download/community)
 
 ## Configuration
-
-Before starting the application, ensure MongoDB is running. You can configure the MongoDB connection settings in `src/main/resources/application.properties`:
-
 In my application, I used the Fixer API. If you're also using this provider, simply specify your access key. If you wish to use a different provider and their API differs, change Interface CurrencyPairsFetch and write your own adapter.
 
 ```properties
-spring.data.mongodb.uri=mongodb://<username>:<password>@localhost:27017/<dbname>
-
 # Clone the repository
 
-# Change apllication.yaml
+git clone https://github.com/Wizzartoz/rate-flow.git
+cd to repository
+
+# Change .env file
 
 # Build the project using Maven
 mvn clean install
 
 # Run the application
-java -jar target/your-application.jar
+docker-compose up -d

@@ -1,0 +1,27 @@
+version: "3.8"
+
+volumes:
+  mongo:
+
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    volumes:
+      - mongo:/data/db
+    ports:
+      - "27017:27017"
+
+  rate_flow:
+    image: rate_flow
+    container_name: rate_flow
+    build:
+      context: .
+    environment:
+      - MONGO_URL=${MONGO_URI}
+      - API_KEY=${API_KEY}
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - mongodb
