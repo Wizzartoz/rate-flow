@@ -35,7 +35,7 @@ public class FixerApiAdapter implements ExchangeApiAdapter {
                             .builder()
                             .from(from)
                             .to(baseCurrency)
-                            .rate(BigDecimal.valueOf(1).divide(BigDecimal.valueOf(rateFromBase), LIMITER,RoundingMode.HALF_UP).doubleValue())
+                            .rate(BigDecimal.valueOf(1).divide(BigDecimal.valueOf(rateFromBase), LIMITER, RoundingMode.HALF_UP).doubleValue())
                             .build();
 
                     return Flux.just(pairFromBase, pairToBase)
