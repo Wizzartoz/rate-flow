@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.rateflow</groupId>
     <artifactId>rateflow</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>rate-flow</name>
     <description>rate-flow</description>
     <properties>
@@ -18,13 +18,11 @@
         <spring-cloud.version>2023.0.0-RC1</spring-cloud.version>
     </properties>
     <dependencies>
+        <!--spring-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,11 +37,10 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+        <!--spring-->
+
+        <!--test-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -60,11 +57,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-webtestclient</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
@@ -74,7 +66,6 @@
             <artifactId>mongodb</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -104,6 +95,15 @@
 
         <!--cucumber-->
 
+        <!--test-->
+
+        <!--other-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -116,6 +116,8 @@
             <classifier>osx-aarch_64</classifier>
         </dependency>
     </dependencies>
+
+    <!--other-->
     <dependencyManagement>
         <dependencies>
             <dependency>
