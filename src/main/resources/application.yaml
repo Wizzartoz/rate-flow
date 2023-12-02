@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+  profiles:
+    #In this profile, requests are made to the server
+    active: prod
+
+
+custom:
+  #The frequency of sending requests, in the free version, it doesn't make sense to make a request more often than once an hour
+  scheduledRate: 3600000
+  #Your API Access Key
+  key: ${API_KEY}
