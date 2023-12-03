@@ -4,8 +4,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.rateflow.domain.CurrencyPair;
 import com.rateflow.presentation.adapters.FixerApiAdapter;
+import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +14,10 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FixerApiAdapterTest {
+
+    private JsonObject jsonObject;
+    private FixerApiAdapter adapter;
+    List<CurrencyPair> result;
 
     private static final String JSON = "{" +
             "\"success\": true," +
@@ -31,14 +35,19 @@ public class FixerApiAdapterTest {
             "}" +
             "}";
 
+    @Before
+    public void setUp() {
+        adapter = new FixerApiAdapter();
+        jsonObject = JsonParser.parseString(JSON).getAsJsonObject();
+        result = new ArrayList<>();
+    }
+
     @Test
     public void testCorrectNumberOfPairs() {
-        JsonObject jsonObject = JsonParser.parseString(JSON).getAsJsonObject();
-        FixerApiAdapter adapter = new FixerApiAdapter();
-        List<CurrencyPair> result = new ArrayList<>();
         adapter.parsePairs(jsonObject).subscribe(
                 result::add
         );
+
         assertNotNull(result);
         assertFalse(result.isEmpty());
 
@@ -48,9 +57,6 @@ public class FixerApiAdapterTest {
 
     @Test
     public void testBaseCurrencyPairsExistence() {
-        JsonObject jsonObject = JsonParser.parseString(JSON).getAsJsonObject();
-        FixerApiAdapter adapter = new FixerApiAdapter();
-        List<CurrencyPair> result = new ArrayList<>();
         adapter.parsePairs(jsonObject).subscribe(
                 result::add
         );
@@ -65,9 +71,6 @@ public class FixerApiAdapterTest {
 
     @Test
     public void testRateCalculation() {
-        JsonObject jsonObject = JsonParser.parseString(JSON).getAsJsonObject();
-        FixerApiAdapter adapter = new FixerApiAdapter();
-        List<CurrencyPair> result = new ArrayList<>();
         adapter.parsePairs(jsonObject).subscribe(
                 result::add
         );
@@ -85,9 +88,6 @@ public class FixerApiAdapterTest {
 
     @Test
     public void testNoDuplicatePairs() {
-        JsonObject jsonObject = JsonParser.parseString(JSON).getAsJsonObject();
-        FixerApiAdapter adapter = new FixerApiAdapter();
-        List<CurrencyPair> result = new ArrayList<>();
         adapter.parsePairs(jsonObject).subscribe(
                 result::add
         );

@@ -28,7 +28,9 @@ public class ClientApi {
     }
 
     @GetMapping("/base/{base}")
-    public Flux<CurrencyPairResponseDto> getCurrencyPairsByBase(@PathVariable String base) {
+    public Flux<CurrencyPairResponseDto> getCurrencyPairsByBase(
+            @PathVariable String base
+    ) {
         return clientService.getCurrencyPairByBase(base).map(currencyPair ->
                 CurrencyPairResponseDto.builder().
                         id(currencyPair.getId()).

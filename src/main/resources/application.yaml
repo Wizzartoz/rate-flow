@@ -4,7 +4,8 @@ spring:
       uri: ${MONGO_URI}
 
 custom:
-  #The frequency of sending requests, in the free version, it doesn't make sense to make a request more often than once an hour
+  # The frequency of sending requests, in the free version,
+  # it doesn't make sense to make a request more often than once an hour
   scheduledRate: 3600000
-  #Your API Access Key
+  # Your API Access Key
   key: ${API_KEY}
