@@ -1,7 +1,6 @@
-package com.rateflow.currency.pair.controller;
+package com.rateflow.presentation;
 
 import com.google.gson.JsonObject;
-import com.rateflow.currency.pair.service.fetch.pairs.feature.GsonDecoder;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

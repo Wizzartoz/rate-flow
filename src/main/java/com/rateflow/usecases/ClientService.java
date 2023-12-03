@@ -1,8 +1,8 @@
-package com.rateflow.currency.pair.service;
+package com.rateflow.usecases;
 
-import com.rateflow.currency.pair.entity.CurrencyPair;
-import com.rateflow.exception.EmptyCurrencyPairsException;
-import com.rateflow.currency.pair.repository.CurrencyPairRepository;
+import com.rateflow.domain.CurrencyPair;
+import com.rateflow.presentation.exceptions.EmptyCurrencyPairsException;
+import com.rateflow.infrastructure.repository.CurrencyPairRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

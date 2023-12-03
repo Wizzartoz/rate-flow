@@ -1,16 +1,19 @@
-package com.rateflow.dto.currency.pair.response;
+package com.rateflow.domain;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@ToString
 @Builder
-public class CurrencyPairResponseDto {
-    @NotEmpty
+@Getter
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
+@Document("pair")
+public class CurrencyPair {
+    @Id
     String id;
     @NotEmpty
     String from;

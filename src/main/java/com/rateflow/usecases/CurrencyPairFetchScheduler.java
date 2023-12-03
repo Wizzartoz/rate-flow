@@ -1,7 +1,8 @@
-package com.rateflow.currency.pair.service.fetch.pairs.feature;
+package com.rateflow.usecases;
 
-import com.rateflow.currency.pair.controller.CurrencyPairsFetch;
-import com.rateflow.currency.pair.repository.CurrencyPairRepository;
+import com.rateflow.presentation.adapters.ExchangeApiAdapter;
+import com.rateflow.presentation.CurrencyPairsFetch;
+import com.rateflow.infrastructure.repository.CurrencyPairRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +39,7 @@ public class CurrencyPairFetchScheduler {
     public void getAllCurrencyPair() {
         //TODO make synchronization for scaling via redis
 
-        //TODO need to add an ETag check
+        //TODO need to add an ETag check or caching
 
         Mono.fromCallable(() -> currencyPairsFetch.fetchCurrencyPairs(key))
                 .subscribeOn(Schedulers.boundedElastic())

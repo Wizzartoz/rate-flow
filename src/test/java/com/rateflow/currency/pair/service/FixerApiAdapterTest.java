@@ -2,8 +2,8 @@ package com.rateflow.currency.pair.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.rateflow.currency.pair.entity.CurrencyPair;
-import com.rateflow.currency.pair.service.fetch.pairs.feature.FixerApiAdapter;
+import com.rateflow.domain.CurrencyPair;
+import com.rateflow.presentation.adapters.FixerApiAdapter;
 import org.junit.Test;
 
 import java.util.ArrayList;

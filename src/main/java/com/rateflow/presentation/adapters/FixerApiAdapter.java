@@ -1,7 +1,7 @@
-package com.rateflow.currency.pair.service.fetch.pairs.feature;
+package com.rateflow.presentation.adapters;
 
 import com.google.gson.JsonObject;
-import com.rateflow.currency.pair.entity.CurrencyPair;
+import com.rateflow.domain.CurrencyPair;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

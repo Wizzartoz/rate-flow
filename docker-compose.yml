@@ -18,7 +18,7 @@ services:
     build:
       context: .
     environment:
-      - MONGO_URL=${MONGO_URI}
+      - MONGO_URI=${MONGO_URI}
       - API_KEY=${API_KEY}
     ports:
       - "8080:8080"

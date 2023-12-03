@@ -1,4 +1,4 @@
-package com.rateflow.currency.pair.service.fetch.pairs.feature;
+package com.rateflow.presentation;
 
 import com.google.gson.Gson;
 import feign.FeignException;

@@ -2,9 +2,9 @@ package com.rateflow.e2e.curency.pair;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rateflow.dto.currency.pair.response.CurrencyPairResponseDto;
-import com.rateflow.currency.pair.entity.CurrencyPair;
-import com.rateflow.currency.pair.repository.CurrencyPairRepository;
+import com.rateflow.presentation.dtos.CurrencyPairResponseDto;
+import com.rateflow.domain.CurrencyPair;
+import com.rateflow.infrastructure.repository.CurrencyPairRepository;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

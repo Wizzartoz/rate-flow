@@ -1,6 +1,6 @@
-package com.rateflow.currency.pair.repository;
+package com.rateflow.infrastructure.repository;
 
-import com.rateflow.currency.pair.entity.CurrencyPair;
+import com.rateflow.domain.CurrencyPair;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;

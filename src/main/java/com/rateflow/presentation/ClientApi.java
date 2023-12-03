@@ -1,7 +1,7 @@
-package com.rateflow.currency.pair.controller;
+package com.rateflow.presentation;
 
-import com.rateflow.dto.currency.pair.response.CurrencyPairResponseDto;
-import com.rateflow.currency.pair.service.ClientService;
+import com.rateflow.presentation.dtos.CurrencyPairResponseDto;
+import com.rateflow.usecases.ClientService;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
