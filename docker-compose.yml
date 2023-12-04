@@ -12,6 +12,13 @@ services:
     ports:
       - "27017:27017"
 
+  redis:
+    image: redis
+    # disable persistence
+    command: "redis-server --save '' --appendonly no"
+    ports:
+      - "6379:6379"
+
   rate_flow:
     image: rate_flow
     container_name: rate_flow

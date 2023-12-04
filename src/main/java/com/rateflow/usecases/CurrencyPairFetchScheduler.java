@@ -1,8 +1,9 @@
 package com.rateflow.usecases;
 
 import com.rateflow.presentation.adapters.ExchangeApiAdapter;
-import com.rateflow.presentation.CurrencyPairsFetch;
+import com.rateflow.presentation.feign.CurrencyPairsFetch;
 import com.rateflow.infrastructure.repository.CurrencyPairRepository;
+import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,6 +44,14 @@ public class CurrencyPairFetchScheduler {
 
         Mono.fromCallable(() -> currencyPairsFetch.fetchCurrencyPairs(key))
                 .subscribeOn(Schedulers.boundedElastic())
+                .onErrorResume(FeignException.class, e -> {
+                    if (e.status() == 304) {
+                        log.info("The data has not been changed");
+                        return Mono.empty();
+                    } else {
+                        return Mono.error(e);
+                    }
+                })
                 .doOnNext(jsonObject -> log.debug("Currency pairs were obtained"))
                 .flatMapMany(exchangeApiAdapter::parsePairs)
                 .collectList()
@@ -54,7 +63,7 @@ public class CurrencyPairFetchScheduler {
                                 .collectList()
                 )
                 .doOnNext(savedPairs -> log.debug("All currency pairs have been saved: " + savedPairs.size()))
-                .doOnError(error -> log.error("Error updating currency pairs", error))
+                .doOnError(error -> log.error("Error updating scurrency pairs", error))
                 .then()
                 .doOnSuccess(unused -> log.info("Currency pairs update process completed."))
                 .subscribe();

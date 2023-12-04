@@ -1,4 +1,4 @@
-package com.rateflow.presentation;
+package com.rateflow.presentation.feign;
 
 import com.google.gson.Gson;
 import feign.FeignException;
