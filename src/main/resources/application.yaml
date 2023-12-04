@@ -3,6 +3,9 @@ spring:
     mongodb:
       uri: ${MONGO_URI}
 
+    redis:
+      url: redis://redis:6379
+
 custom:
   # The frequency of sending requests, in the free version,
   # it doesn't make sense to make a request more often than once an hour
