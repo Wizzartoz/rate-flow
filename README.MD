@@ -17,7 +17,7 @@ This application provides an API for managing and retrieving currency pairs. It 
     - **Content:** List of currency pairs
 - **Error Response:**
     - **Code:** `404 Not Found`
-    - **Content:** `{ error: "Currency pairs not found" }`
+    - **Content:** `{ error: "Not Found" }`
 
 ### Getting all pairs by base currency code. USD for example
 
@@ -30,7 +30,7 @@ This application provides an API for managing and retrieving currency pairs. It 
     - **Content:** A list of all currencies associated with the base
 - **Error Response:**
     - **Code:** `404 Not Found`
-    - **Content:** `{ error: "Currency pairs not found" }`
+    - **Content:** `{ error: "Not Found" }`
 
 ### Getting pair by combination currency codes. For example USD/UAH
 
@@ -43,10 +43,10 @@ This application provides an API for managing and retrieving currency pairs. It 
     - **Content:** A list of all currencies associated with the base
 - **Error Response:**
     - **Code:** `404 Not Found`
-    - **Content:** `{ error: "Currency pairs not found" }`
+    - **Content:** `{ error: "Not Found" }`
 - **Error Response:**
   - **Code:** `400 Bad Request`
-  - **Content:** `{ error: "Validation failed"}`
+  - **Content:** `{ error: "Bad Request"}`
 
     
 ## Prerequisites
