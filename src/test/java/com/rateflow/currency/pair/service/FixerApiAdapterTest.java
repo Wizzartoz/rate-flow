@@ -2,8 +2,8 @@ package com.rateflow.currency.pair.service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.rateflow.domain.CurrencyPair;
-import com.rateflow.presentation.adapters.FixerApiAdapter;
+import com.rateflow.currency.domain.entity.CurrencyPair;
+import com.rateflow.currency.presentation.adapter.input.FixerApiAdapter;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class FixerApiAdapterTest {
 
     private JsonObject jsonObject;
     private FixerApiAdapter adapter;
-    List<CurrencyPair> result;
+    private List<CurrencyPair> result;
 
     private static final String JSON = "{" +
             "\"success\": true," +

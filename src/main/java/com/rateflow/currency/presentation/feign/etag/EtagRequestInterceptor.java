@@ -1,5 +1,6 @@
-package com.rateflow.presentation.feign.etag;
+package com.rateflow.currency.presentation.feign.etag;
 
+import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.AllArgsConstructor;
 import org.springframework.data.redis.core.ReactiveStringRedisTemplate;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class EtagRequestInterceptor implements feign.RequestInterceptor {
+public class EtagRequestInterceptor implements RequestInterceptor {
 
     private ReactiveStringRedisTemplate reactiveStringRedisTemplate;
     @Override

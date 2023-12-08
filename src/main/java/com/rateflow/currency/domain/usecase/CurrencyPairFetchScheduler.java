@@ -1,8 +1,8 @@
-package com.rateflow.usecases;
+package com.rateflow.currency.domain.usecase;
 
-import com.rateflow.presentation.adapters.ExchangeApiAdapter;
-import com.rateflow.presentation.feign.CurrencyPairsFetch;
-import com.rateflow.infrastructure.repository.CurrencyPairRepository;
+import com.rateflow.currency.infrastructure.repository.CurrencyPairRepository;
+import com.rateflow.currency.presentation.adapter.input.ExchangeApiAdapter;
+import com.rateflow.currency.presentation.feign.CurrencyPairsFetch;
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class CurrencyPairFetchScheduler {
     public void getAllCurrencyPair() {
         //TODO make synchronization for scaling via redis
 
-        //TODO need to add an ETag check or caching
+        //TODO need to add caching
 
         Mono.fromCallable(() -> currencyPairsFetch.fetchCurrencyPairs(key))
                 .subscribeOn(Schedulers.boundedElastic())
@@ -63,7 +63,7 @@ public class CurrencyPairFetchScheduler {
                                 .collectList()
                 )
                 .doOnNext(savedPairs -> log.debug("All currency pairs have been saved: " + savedPairs.size()))
-                .doOnError(error -> log.error("Error updating scurrency pairs", error))
+                .doOnError(error -> log.error("Error updating currency pairs", error))
                 .then()
                 .doOnSuccess(unused -> log.info("Currency pairs update process completed."))
                 .subscribe();

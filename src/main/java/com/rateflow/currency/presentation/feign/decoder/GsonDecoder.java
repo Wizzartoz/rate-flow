@@ -1,4 +1,4 @@
-package com.rateflow.presentation.feign;
+package com.rateflow.currency.presentation.feign.decoder;
 
 import com.google.gson.Gson;
 import feign.FeignException;
@@ -13,7 +13,8 @@ import java.nio.charset.StandardCharsets;
 public class GsonDecoder implements Decoder {
     @Override
     public Object decode(Response response, Type type) throws IOException, FeignException {
-        Reader reader = response.body().asReader(StandardCharsets.UTF_8);
-        return new Gson().fromJson(reader, type);
+        try (Reader reader = response.body().asReader(StandardCharsets.UTF_8)) {
+            return new Gson().fromJson(reader, type);
+        }
     }
 }

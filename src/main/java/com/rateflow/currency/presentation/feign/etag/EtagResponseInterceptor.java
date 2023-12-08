@@ -1,4 +1,4 @@
-package com.rateflow.presentation.feign.etag;
+package com.rateflow.currency.presentation.feign.etag;
 
 import feign.InvocationContext;
 import feign.Response;
